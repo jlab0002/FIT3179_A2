@@ -1,0 +1,85 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Pay Gap by Average Weekly Pay",
+  "data": {
+    "url": "data/av_weekly_sector.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "fold": [
+        "private_male", 
+        "public_male", 
+        "private_female", 
+        "public_female"
+      ],
+      "as": ["Category", "Earnings"]
+    },
+    {
+      "calculate": "datum.Category === 'private_male' ? 'Private Males' : datum.Category === 'public_male' ? 'Public Males' : datum.Category === 'private_female' ? 'Private Females' : 'Public Females'",
+      "as": "Category_renamed"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": true,
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "axis": {
+            "title": "Date"
+          }
+        },
+        "y": {
+          "field": "Earnings",
+          "type": "quantitative",
+          "axis": {
+            "title": "Earnings ($)"
+          },
+          "scale": {
+            "domain": [800, 2500]
+          }
+        },
+        "color": {
+          "field": "Category_renamed",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Private Males", "Public Males", "Private Females", "Public Females"],
+            "range": ["#2a52be", "lightblue", "#ec3b83", "pink"]
+          },
+          "legend": {
+            "title": "Categories"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "value": 1
+          },
+          "value": 0.2
+        }
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["Category_renamed"],
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    }
+  ],
+  "height": 200,
+  "width": 350
+}
