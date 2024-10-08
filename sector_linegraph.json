@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Pay Gap by Average Weekly Pay",
   "data": {
-    "url": "data/av_weekly_sector.csv",
+    "url": "https://github.com/jlab0002/FIT3179_A2/blob/main/av_weekly_sector.csv#:~:text=av_weekly_industry.csv-,av_weekly_sector,-.csv",
     "format": {
       "type": "csv"
     }
