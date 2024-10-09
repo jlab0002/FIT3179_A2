@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jlab0002/FIT3179_A2/main/av_weekly_industry.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "fold": ["Males ($)", "Females ($)"],
+      "as": ["Gender", "Earnings"]
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "tooltip": true
+  },
+  "params": [
+    {
+      "name": "highlight",
+      "select": {
+        "type": "point",
+        "on": "mouseover",
+        "clear": "mouseout"
+      }
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Industry",
+      "type": "nominal",
+      "axis": {"title": "Industry"}
+    },
+    "x": {
+      "field": "Earnings",
+      "type": "quantitative",
+      "title": "Earnings ($)"
+    },
+    "color": {
+      "field": "Gender",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Males ($)", "Females ($)"],
+        "range": ["#2a52be", "#ec3b83"]
+      },
+      "title": "Gender"
+    },
+    "yOffset": {
+      "field": "Gender"
+    },
+    "opacity": {
+      "condition": {
+        "param": "highlight",
+        "value": 1
+      },
+      "value": 0.6
+    },
+    "tooltip": [
+      {"field": "Industry", "type": "nominal", "title": "Industry"},
+      {"field": "Gender", "type": "nominal", "title": "Gender"},
+      {"field": "Earnings", "type": "quantitative", "title": "Earnings ($)"}
+    ]
+  },
+  "config": {
+    "bar": {
+      "size": 8
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    }
+  },
+  "width": 800,
+  "height": 500
+}

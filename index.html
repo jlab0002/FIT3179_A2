@@ -1,0 +1,146 @@
+<html>
+
+<head>
+  <title>Differences in Pay between Genders</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Google font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+ 
+   <!-- CSS file -->
+   <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+
+  </head>
+
+  <body>
+    <div class="page">
+        <!-- Header Section -->
+        <div class="pure-g">
+          <div class="pure-u-1">
+            <div class="description" style="text-align: center;">
+              <h1>Differences in Pay between Genders</h1>
+              <h3>Is the Gender Pay Gap Still Prominent in Australia?</h3>
+            </div>
+          </div>
+        </div>
+        <!-- Overall Statistics -->
+        <div class="pure-g">
+          <div class="pure-u-1">
+            <div class="description-mid" style="text-align: center;">
+                <h2>Overall Statistics</h2>
+              <div class="pay-gap-container">
+                <div class="pay-card">
+                  <img src="https://img.icons8.com/ios-filled/50/4a90e2/male.png" alt="Men Icon">
+                  <div class="title">Men</div>
+                  <div class="wage">$1,923 <span class="subtitle">PW Wage</span></div>
+                  <div class="py-salary">$99,996 PY Salary</div>
+                </div>
+                <div class="pay-card">
+                  <img src="https://img.icons8.com/ios-filled/50/f36f6f/female.png" alt="Women Icon">
+                  <div class="title">Women</div>
+                  <div class="wage">$1,698 <span class="subtitle">PW Wage</span></div>
+                  <div class="py-salary">$87,828 PY Salary</div>
+                </div>
+              </div>
+              <div class="gap">
+                23.40% <span class="avg-pay-gap">Avg. Pay Gap (2024)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Pay Gap Comparison -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <figure>
+                    <h2>Average Weekly Pay by Occupation</h2>
+                    <h3>An Analysis on the Differences in Pay across different Occupations </h3>
+                    <div id="occ_bar" class="vis-container"></div>
+                    <figcaption>The graph highlights the persistence of the gender pay gap across various occupations. For every category, male earnings significantly exceed those of females, especially in managerial and machinery operator roles. Even in traditionally female-dominated fields like clerical and administrative work, the disparity remains noticeable. The most substantial gap is evident in managerial positions, where men earn significantly more. This visualization reinforces that gender pay inequality continues to be a prominent issue in the workforce across different sectors.</figcaption>
+                </figure>
+            </div>
+
+            <!-- Pay Gap By Region -->
+            <div class="pure-u-1-2">
+                <figure>
+                    <h2>Pay Gap by Region</h2>
+                    <h3>An Analysis of the Gender Pay Gap in Different Australian Regions</h3>
+                    <div id="pop_den" class="vis-container"></div>
+                    <figcaption>The gender pay gap across Australian states varies significantly, with Western Australia showing the highest disparity, while Tasmania has the lowest. Northern Territory and Queensland also exhibit significant pay gaps, while South Australia, New South Wales, and Northern Victoria show moderate levels of disparity. Victoria demonstrates a slightly lower but still notable pay gap. Overall, these variations highlight regional differences in gender pay inequality, with some states facing greater challenges in achieving pay equity.</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <!-- Average Pay by Industry -->
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <figure>
+                    <h2>Average Weekly Pay by Industry</h2>
+                    <h3>On Average Females Take Home ~$270 Less than Men Across all industries per Week</h3>
+                    <div id="dot_industry" class="vis-containe"></div>
+                </figure>
+            </div>
+        </div>
+
+        <!-- Pay Trends by Sector Over Time -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <figure>
+                    <h2>Pay Trends by Sector Over Time</h2>
+                    <h3>Earnings Growth from 2014 to 2024 in Different Sectors</h3>
+                    <div id="sec_line" class="vis-container"></div>
+                    <figcaption>The line chart illustrates earnings over time for both genders across private and public sectors from 2014 to 2024. Throughout this period, there is a consistent upward trend in earnings for all groups, but there is no indication of efforts to close the gender pay gap. Public sector males consistently earn the highest, followed by private sector males, while both female categories remain below their male counterparts with similar gaps over the years. This pattern suggests that while earnings have increased for everyone, the relative differences between genders have remained largely unchanged, reflecting an absence of substantial progress toward gender pay equity.</figcaption>
+                </figure>
+            </div>
+
+            <!-- Employment Status vs Pay -->
+            <div class="pure-u-1-2">
+                <figure>
+                    <h2>Employment Status vs. Pay</h2>
+                    <h3>A Scatterplot Analysis of Earnings Based on Employment Type</h3>
+                    <div id="emp_scat" class="vis-container"></div>
+                    <figcaption>The scatter plot provides a breakdown of earnings for various employment categories full-time, part-time, and all workers segmented by gender. Across all categories, full-time males consistently show higher earnings at every level (1st quartile, median, and 3rd quartile), indicating significant disparity compared to females. Full-time females, as well as part-time males and females, have consistently lower earnings across these quantiles, with part-time females showing the lowest earnings overall. The comparison highlights a clear earnings gap between genders, not only for full-time workers but also for those working part-time, further emphasizing the persistent inequities.</figcaption>
+                </figure>
+            </div>
+        </div>
+        <!-- metadata -->
+         <div class="pure-g">
+            <div class="pure-u-1">
+                <div style="text-align: center;">
+                <figcaption>Designed by Jerome Labutte, 2024</figcaption>
+                <figcaption>Data Source - Australian Beareau of Statistics (ABS)</figcaption>
+                <figcaption><a href="https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/employee-earnings-and-hours-australia/latest-release" target="_blank">Employee Earnings and Hours</a></figcaption>
+                <figcaption><a href="https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/average-weekly-earnings-australia/latest-release" target="_blank">Average Weekly Earnings, Australia</a></figcaption>
+            </div>
+            </div>
+    </div>
+
+    <script type="text/javascript">
+        var specVis1 = "pay_gap_chloropleth_map.json";
+        var specVis2 = "industry_dotplot.json";
+        var specVis3 = "sector_linegraph.json";
+        var specVis4 = "emp_status_scatterplot.json";
+        var specVis5 = "ocupation_bargraph.json"
+
+        vegaEmbed('#pop_den', specVis1, { "actions": false });
+        vegaEmbed('#dot_industry', specVis2, { "actions": false });
+        vegaEmbed('#sec_line', specVis3, { "actions": false });
+        vegaEmbed('#emp_scat', specVis4, { "actions": false });
+        vegaEmbed('#occ_bar', specVis5, {"actions": false})
+    </script>
+
+</body>
+
+</html>
