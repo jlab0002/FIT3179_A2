@@ -1,89 +1,65 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "url": "https://raw.githubusercontent.com/jlab0002/FIT3179_A2/main/ne_50m_admin_1_states_provinces.json",
-      "format": {
-        "type": "topojson",
-        "feature": "ne_50m_admin_1_states_provinces"
-      }
-    },
-    "transform": [
-      {
-        "lookup": "properties.name",
-        "from": {
-          "data": {
-            "url": "https://raw.githubusercontent.com/jlab0002/FIT3179_A2/main/pay_gap_state.csv"
-          },
-          "key": "State",
-          "fields": ["pay_gap"]
-        }
-      }
-    ],
-    "layer": [
-      {
-        "mark": {
-          "type": "geoshape",
-          "stroke": "black",
-          "strokeWidth": 1
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jlab0002/FIT3179_A2/main/ne_50m_admin_1_states_provinces.json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_50m_admin_1_states_provinces"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/jlab0002/FIT3179_A2/main/pay_gap_state.csv"
         },
-        "encoding": {
-          "color": {
-            "field": "pay_gap",
-            "type": "quantitative",
-            "title": "Pay Gap (%)",
-            "scale": {
-              "scheme": "blues"
-            }
-          },
-          "opacity": {
-            "condition": {
-              "selection": "highlight",
-              "value": 1
-            },
-            "value": 0.6
-          },
-          "tooltip": [
-            {"field": "properties.name", "type": "nominal", "title": "State"},
-            {"field": "pay_gap", "type": "quantitative", "title": "Pay Gap (%)", "format": ".0%"}
-          ]
-        },
-        "selection": {
-          "highlight": {
-            "type": "single",
-            "on": "mouseover",
-            "empty": "none",
-            "clear": "mouseout"
-          }
-        }
+        "key": "State",
+        "fields": ["pay_gap"]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "geoshape",
+        "stroke": "black",
+        "strokeWidth": 1
       },
-      {
-        "mark": {
-          "type": "text",
-          "fontSize": 12,
-          "color": "black",
-          "baseline": "middle"
-        },
-        "encoding": {
-          "text": {
-            "field": "pay_gap",
-            "type": "quantitative",
-            "format": ".1%"  
-          },
-          "longitude": {
-            "field": "properties.longitude",
-            "type": "quantitative"
-          },
-          "latitude": {
-            "field": "properties.latitude",
-            "type": "quantitative"
+      "encoding": {
+        "color": {
+          "field": "pay_gap",
+          "type": "quantitative",
+          "title": "Pay Gap (%)",
+          "scale": {
+            "scheme": "blues"
           }
+        },
+        "opacity": {
+          "condition": {
+            "selection": "highlight",
+            "value": 1
+          },
+          "value": 0.6
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State"},
+          {"field": "pay_gap", "type": "quantitative", "title": "Pay Gap (%)", "format": ".0%"}
+        ]
+      },
+      "selection": {
+        "highlight": {
+          "type": "single",
+          "on": "mouseover",
+          "empty": "none",
+          "clear": "mouseout"
         }
       }
-    ],
-    "projection": {
-      "type": "mercator"
-    },
-    "width": 450,
-    "height": 300
-  }
-  
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  },
+  "width": 450,
+  "height": 300
+}
