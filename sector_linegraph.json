@@ -19,7 +19,7 @@
     },
     {
       "calculate": "datum.Category === 'private_male' ? 'Private Males' : datum.Category === 'public_male' ? 'Public Males' : datum.Category === 'private_female' ? 'Private Females' : 'Public Females'",
-      "as": "Category_renamed"
+      "as": "Category "
     }
   ],
   "layer": [
@@ -49,7 +49,7 @@
           }
         },
         "color": {
-          "field": "Category_renamed",
+          "field": "Category ",
           "type": "nominal",
           "scale": {
             "domain": ["Private Males", "Public Males", "Private Females", "Public Females"],
@@ -72,7 +72,7 @@
           "name": "hover",
           "select": {
             "type": "point",
-            "fields": ["Category_renamed"],
+            "fields": ["Category "],
             "on": "mouseover",
             "clear": "mouseout"
           }
